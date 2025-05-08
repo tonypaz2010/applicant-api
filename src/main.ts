@@ -4,6 +4,7 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function main() {
+  
   const app = await NestFactory.create(AppModule);
   const logger = new Logger('main')
 
@@ -27,5 +28,9 @@ async function main() {
  
   await app.listen(process.env.PORT);
   logger.log(`Corriendo en puerto: ${ process.env.PORT}`);
+  
+  app.enableCors({
+    origin: process.env.HOST_FE,
+  });
 }
 main();
