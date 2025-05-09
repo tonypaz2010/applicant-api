@@ -18,19 +18,20 @@ async function main() {
     })
    );
 
-   const config = new DocumentBuilder()
-     .setTitle('JOBS RESTFul API')
-     .setDescription('Jobs endpoints')
-     .setVersion('1.0')
-     .build();
-   const document = SwaggerModule.createDocument(app, config);
-   SwaggerModule.setup('api', app, document);
+  const config = new DocumentBuilder()
+    .setTitle('JOBS RESTFul API')
+    .setDescription('Jobs endpoints')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
  
-  await app.listen(process.env.PORT);
-  logger.log(`Corriendo en puerto: ${ process.env.PORT}`);
-  
   app.enableCors({
     origin: process.env.HOST_FE,
   });
+
+  await app.listen(process.env.PORT);
+  logger.log(`Corriendo en puerto: ${ process.env.PORT}`);
+  
 }
 main();
